@@ -30,24 +30,37 @@ Additional engineered features include:
 The main steps in the notebook are: 
 
 1. **Data loading and inspection**  
-   - Read the password data into a pandas DataFrame and explore basic statistics.
-     
 2. **Feature engineering**  
-   - Compute length and character frequency features (lowercase, uppercase, digits, special characters).   
-   - Create a `common_password` feature using a small dictionary of very frequent passwords.  
+3. **Train–test split and preprocessing**  
+4. **Model training**   
+5. **Evaluation**  
 
-3. **Label preparation**  
-   - Use both numeric strength labels and their mapped text labels (`weak`, `medium`, `strong`) for analysis.   
+## Model Comparison
 
-4. **Train–test split and preprocessing**  
-   - Split the dataset into training and testing sets. 
-   - Optionally scale or normalize features depending on the chosen algorithm. 
+- **Logistic Regression**
+  - Simple and interpretable baseline model
+  - Fast to train but limited to linear decision boundaries
+  - Struggles with complex, non-linear feature interactions
 
-5. **Model training**  
-   - Train classification models (e.g., tree-based or other supervised classifiers) to predict password strength from the engineered features. 
+- **Random Forest Classifier**
+  - Captures non-linear relationships between password features
+  - Strong performance across all three classes (`weak`, `medium`, `strong`)
+  - Provides feature importance for better interpretability
 
-6. **Evaluation**  
-   - Evaluate model performance using accuracy and other metrics such as confusion matrix and classification report.   
+- **Gradient Boosting / XGBoost**
+  - Boosting-based ensemble model with higher predictive power
+  - Slightly better accuracy at the cost of increased training time
+  - Requires more hyperparameter tuning
+
+**Evaluation Metrics**
+- Accuracy
+- Precision, Recall, and F1-score
+- Confusion Matrix
+
+**Final Model Selection**
+- Tree-based models outperformed Logistic Regression, especially for the `weak` and `strong` classes.
+- **Random Forest Classifier** was chosen as the final model due to its balanced accuracy, robustness across classes, and interpretable feature importance.
+
 
 ## Installation and Usage
 
